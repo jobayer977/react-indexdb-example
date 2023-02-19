@@ -9,7 +9,7 @@ https://docs.nestjs.com/modules
 */
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
-  controllers: [UserController],
+  controllers: [UserController, UserController],
   providers: [UserService],
   exports: [UserService],
 })

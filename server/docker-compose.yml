@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   postgres:
@@ -9,8 +9,8 @@ services:
     volumes:
       - ~/apps/postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=auuntoo
-      - POSTGRES_USER=auuntoo
+      - POSTGRES_PASSWORD=jobayer
+      - POSTGRES_USER=jobayer
   adminer:
     image: adminer:latest
     restart: always

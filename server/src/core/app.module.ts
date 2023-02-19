@@ -7,11 +7,11 @@ import { AppService } from "./app.service";
 import { AuthModule } from "../modules/auth/auth.module";
 import { DatabaseModule } from "../database/database.module";
 import { Module } from "@nestjs/common";
-import { SocketModule } from "../modules/socket/socket.module";
+import { TaskModule } from "./../modules/task/task.module";
 import { UserModule } from "../modules/user/user.module";
 
 @Module({
-  imports: [SocketModule, DatabaseModule, UserModule, AuthModule],
+  imports: [TaskModule, DatabaseModule, UserModule, AuthModule, TaskModule],
   controllers: [AppController],
   providers: [
     AppService,

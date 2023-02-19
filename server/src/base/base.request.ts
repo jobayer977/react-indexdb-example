@@ -1,12 +1,13 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { IsEmpty } from "class-validator";
 
 export class BaseFilterRequestDTO {
-  @ApiProperty()
-  searchTerm: string;
+  @ApiProperty({ required: false })
+  searchTerm?: string;
 
-  @ApiProperty({ example: 1 })
+  @ApiProperty({ example: 1, required: false })
   page: number;
 
-  @ApiProperty({ example: 10 })
+  @ApiProperty({ example: 10, required: false })
   take: number;
 }
