@@ -1,0 +1,12 @@
+{
+  "prettier/prettier": [
+    {
+      "singleQuote": true,
+      "parser": "flow"
+    },
+    {
+      "trailingComma": "es5",
+      "parser": "flow"
+    }
+  ]
+}
