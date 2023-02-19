@@ -11,22 +11,23 @@ export class UserService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>
   ) {}
-
   async filter(options: BaseFilterRequestDTO): Promise<any> {
     try {
       const pOptions: any = paginationOptions(options);
+      const whr = {};
+      if (options.searchTerm) {
+        whr["firstName"] = Raw(
+          (alias) =>
+            `LOWER(${alias}) Like '%${options.searchTerm.toLowerCase()}%'`
+        );
+        whr["lastName"] = Raw(
+          (alias) =>
+            `LOWER(${alias}) Like '%${options.searchTerm.toLowerCase()}%'`
+        );
+      }
       const response = await this.userRepository.findAndCount({
         order: { createdAt: "ASC" },
-        where: {
-          firstName: Raw(
-            (alias) =>
-              `LOWER(${alias}) Like '%${options.searchTerm.toLowerCase()}%'`
-          ),
-          lastName: Raw(
-            (alias) =>
-              `LOWER(${alias}) Like '%${options.searchTerm.toLowerCase()}%'`
-          ),
-        },
+        where: whr,
         skip: pOptions.skip,
         take: pOptions.take,
       });
@@ -35,12 +36,11 @@ export class UserService {
       throw new Error(error);
     }
   }
-  async checkIfUserExist(phoneNumber: string, type: UserType): Promise<User> {
+  async checkIfUserExist(phoneNumber: string): Promise<User> {
     try {
       return this.userRepository.findOne({
         where: {
           phoneNumber: phoneNumber,
-          type: type,
         },
       });
     } catch (error) {
@@ -49,10 +49,7 @@ export class UserService {
   }
   async createUser(user: User): Promise<User> {
     try {
-      const isAlreadyExist = await this.checkIfUserExist(
-        user.phoneNumber,
-        user.type
-      );
+      const isAlreadyExist = await this.checkIfUserExist(user.phoneNumber);
       if (isAlreadyExist) {
         throw new Error("User already exist");
       }
