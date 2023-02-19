@@ -1,4 +1,3 @@
 export const ENV = {
-	CORE_END_POINT:
-		'https://react-indexdb-example-production.up.railway.app/api/v1',
+	CORE_END_POINT: 'https://api-hk.jobayer.dev/api/v1',
 };
