@@ -6,6 +6,8 @@
 	"author": "Jobayerdev <jobayerhossain977@gmail.com>",
 	"license": "MIT",
 	"scripts": {
+		"install:server": "cd server && npm install",
+		"install:client": "cd client && npm install",
 		"build:server": "cd server && npm run build",
 		"build:client": "cd client && npm run build",
 		"start:server": "cd server && npm run start",
