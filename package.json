@@ -1,14 +1,14 @@
 {
-  "name": "react-indexdb-example",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "git@github.com:jobayer977/react-indexdb-example.git",
-  "author": "Jobayerdev <jobayerhossain977@gmail.com>",
-  "license": "MIT",
-  "scripts": {
-    "build:server":"cd server && npm run build",
-    "build:client":"cd client && npm run build",
-    "start:server":"cd server && npm run start",
-    "start:client":"cd client && npm run start"
-  },
+	"name": "react-indexdb-example",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "git@github.com:jobayer977/react-indexdb-example.git",
+	"author": "Jobayerdev <jobayerhossain977@gmail.com>",
+	"license": "MIT",
+	"scripts": {
+		"build:server": "cd server && npm run build",
+		"build:client": "cd client && npm run build",
+		"start:server": "cd server && npm run start",
+		"start:client": "cd client && npm run start"
+	}
 }
