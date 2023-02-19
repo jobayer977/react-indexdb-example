@@ -43,4 +43,9 @@ export class TaskController {
   ): Promise<any> {
     return this.service.update(id.trim(), reqPayloads);
   }
+
+  @Get("/:id")
+  async findById(@Param("id") id: string): Promise<Task> {
+    return this.service.findById(id.trim());
+  }
 }

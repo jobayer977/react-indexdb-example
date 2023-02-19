@@ -1,9 +1,6 @@
 import { useLogin, useRegister } from '../../../services/api-quries';
-
-import { ILoginRequest } from 'src/models';
 import { message } from 'antd';
 import { storage } from '../../../utils';
-
 export const useAuth = () => {
 	const loginFn = useLogin({
 		config: {

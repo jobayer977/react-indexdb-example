@@ -1,5 +1,4 @@
 import jwt_decode from 'jwt-decode';
-
 export const concatFilterQuery = (options: any): string => {
 	return Object.keys(options)
 		.map((x) => {
@@ -7,14 +6,13 @@ export const concatFilterQuery = (options: any): string => {
 		})
 		.join('&');
 };
-
 const storagePrefix = '';
 export const storage = {
 	getToken: (): string | false => {
 		let item: any = localStorage.getItem(`${storagePrefix}token`);
 		return item;
 	},
-	getDecodedToken: () => {
+	getDecodedToken: (): any => {
 		let item: any = localStorage.getItem(`${storagePrefix}token`);
 		return jwt_decode(item);
 	},

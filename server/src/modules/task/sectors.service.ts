@@ -36,7 +36,8 @@ export class SectorsService {
       const dataArr: any = await this.repository.find();
       const finalArry: any[] = [];
       await asyncForEach(dataArr, (data) => {
-        data.title = data.title;
+        data.title = data?.title;
+        data.value = data?.id;
         data.children = dataArr.filter((_filter) => {
           if (
             _filter.parent &&

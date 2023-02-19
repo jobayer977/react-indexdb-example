@@ -38,6 +38,7 @@ export class TaskService {
         .leftJoinAndSelect("task.user", "user")
         .leftJoinAndSelect("task.taskSectors", "taskSectors")
         .leftJoinAndSelect("taskSectors.sector", "sector")
+        .orderBy("task.createdAt", "DESC")
         .where(where)
         .skip(pOptions.skip)
         .take(pOptions.take)
@@ -125,6 +126,23 @@ export class TaskService {
       if (isUserExist) {
         await this.repository.delete(id);
         return isUserExist;
+      } else {
+        throw new Error("Not found");
+      }
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+  async findById(id: string): Promise<Task> {
+    try {
+      const isExist = await this.repository.findOne({
+        where: {
+          id: id,
+        },
+        relations: ["user", "taskSectors", "taskSectors.sector"],
+      });
+      if (isExist) {
+        return isExist;
       } else {
         throw new Error("Not found");
       }
