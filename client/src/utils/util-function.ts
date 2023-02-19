@@ -1,11 +1,4 @@
 import jwt_decode from 'jwt-decode';
-export const concatFilterQuery = (options: any): string => {
-	return Object.keys(options)
-		.map((x) => {
-			return `${x}=${options[x]}`;
-		})
-		.join('&');
-};
 const storagePrefix = '';
 export const storage = {
 	getToken: (): string | false => {
