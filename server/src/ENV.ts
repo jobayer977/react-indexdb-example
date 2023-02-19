@@ -1,19 +1,19 @@
-import * as path from 'path';
+import * as path from "path";
 
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { config } from 'dotenv';
-import { toBool } from './utils/conversation.util'
+import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { config } from "dotenv";
+import { toBool } from "./utils/conversation.util";
 
 config({
   path: path.join(
     process.cwd(),
-    'environments',
-    `${process.env.NODE_ENV || 'development'}.env`,
+    "environments",
+    `${process.env.NODE_ENV || "development"}.env`
   ),
 });
-export const ENV_DEVELOPMENT = 'development';
-export const ENV_PRODUCTION = 'production';
-export const ENV_STAGING = 'staging';
+export const ENV_DEVELOPMENT = "development";
+export const ENV_PRODUCTION = "production";
+export const ENV_STAGING = "staging";
 export const ENV = {
   port: +process.env.PORT,
   env: process.env.NODE_ENV || ENV_DEVELOPMENT,
@@ -51,5 +51,5 @@ export const ormConfig: TypeOrmModuleOptions = {
   synchronize: toBool(ENV.db.synchronize),
   logging: toBool(ENV.db.logging),
   autoLoadEntities: toBool(ENV.db.autoLoadEntities),
-  entities: [path.join(__dirname, '../app/**/*.entity{.ts,.js}')],
+  entities: [path.join(__dirname, "../app/**/*.entity{.ts,.js}")],
 };
